@@ -1,0 +1,15 @@
+.daysWeek{
+    display: flex;
+    flex-direction: row;
+}
+.daysWeek>*{
+    margin-left: 1em;
+}
+.weekDaysBox{
+    display: flex;
+    flex-direction: row;
+}
+.weekDaysBox>*{
+    margin-left: 1.45em;
+    text-align: center;
+}
