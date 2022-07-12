@@ -14,15 +14,15 @@ const Day = (props) => {
       return currentWeekDay.push(format(day, "dd"));
     }
   });
-  function addSpaceIndex(array){
-    if (array.lastIndexOf("01", 0) != 0) {
-      array.unshift(" ");
-  }else{
-    // 
-  }
+  // function addSpaceIndex(array){
+  //   if (array.lastIndexOf("01", 0) != 0) {
+  //     array.unshift(" ");
+  // }else{
+  //   // 
+  // }
   
-  }
-  addSpaceIndex(currentWeekDay)
+  // }
+  // addSpaceIndex(currentWeekDay) // COMEBACK LATER
   
   console.log(currentWeekDay);
 
