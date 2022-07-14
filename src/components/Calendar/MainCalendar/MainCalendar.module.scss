@@ -1,15 +1,43 @@
-.daysWeek{
+.daysWeek {
+  display: flex;
+  flex-direction: row;
+}
+.daysWeek > * {
+  margin-left: 1em;
+}
+.monthAgeName{
     display: flex;
     flex-direction: row;
+    
+    
 }
-.daysWeek>*{
-    margin-left: 1em;
+.monthAgeName>*{
+    font-size:  20px;
+    font-weight: bold;
+    color:#009991;
+    text-transform: uppercase;
 }
-.weekDaysBox{
-    display: flex;
-    flex-direction: row;
+.weekDaysBox {
+  display: flex;
+  flex-direction: row;
+  margin-right: 1.45em;
+  text-align: center;
 }
-.weekDaysBox>*{
-    margin-left: 1.45em;
-    text-align: center;
+.weekDaysBox > * {
+  margin-left: 1.45em;
+}
+.text {
+  color: #b7b7b7;
+}
+.dayOfText {
+  color: #eb1b57;
+  font-weight: bold;
+}
+.calendarConainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90%;
+  width: 48%;
+  background-color: white;
 }
