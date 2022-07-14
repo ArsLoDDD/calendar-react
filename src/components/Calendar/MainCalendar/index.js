@@ -25,22 +25,46 @@ class MainCalendar extends Component {
       },
       monthNum: 6,
       isThirtyDays: false,
+      todayNum: 0,
     };
   }
- 
-  handleMonth = (e) => {
-    const { value } = e.target;
-    const { changeCurrentMonth } = this.props;
-    changeCurrentMonth(String(value));
-  };
-  render() {
+  handleMonth = (props) => {
     const { age, isThirtyDays, month, monthNum } = this.state;
-    const daysWeek = ["S", "M", "T", "W", "T", "F", "S"];
     const valueMonthName = Object.values(month)[[monthNum]];
+    const { changeCurrentMonth } = this.props;
+    changeCurrentMonth(valueMonthName);
+  };
+
+  changeCurrentTodayNum = (newTodayNum) => {
+    this.setState({ todayNum: newTodayNum });
+  };
+
+  handleToday = (props) => {
+    const { todayNum } = this.state;
+    const { changeCurrentToday } = this.props;
+    console.log(todayNum);
+    changeCurrentToday(todayNum);
+  };
+
+  componentDidMount() {
+    this.handleToday();
+  }
+  componentDidUpdate() {
+    const { todayNum } = this.state;
+    console.log(todayNum);
+  }
+  componentDidMount() {
+    this.handleMonth();
+  }
+  render() {
+    const { age, isThirtyDays, month, monthNum, todayNum } = this.state;
+    const valueMonthName = Object.values(month)[[monthNum]];
+    const daysWeek = ["S", "M", "T", "W", "T", "F", "S"];
+
     return (
       <div className={styles.calendarConainer}>
         <div className={styles.monthAgeName}>
-          <p onClick={this.handleMonth}>{valueMonthName} </p>
+          <p>{valueMonthName} </p>
           &nbsp;
           <p>{age}</p>
         </div>
@@ -53,6 +77,7 @@ class MainCalendar extends Component {
                 calendarAge={age}
                 calendarMonth={6}
                 howManyDays={[isThirtyDays]}
+                changeCurrentTodayNum={this.changeCurrentTodayNum}
               />
             </div>
           ))}

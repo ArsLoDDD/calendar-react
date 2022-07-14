@@ -12,19 +12,23 @@ class Calendar extends Component {
     };
   }
   changeCurrentMonth = (newMonth) => {
-    console.log(newMonth)
+    console.log(newMonth);
     this.setState({ month: newMonth });
+  };
+  changeCurrentToday = (newToday) => {
+    console.log(newToday);
+    this.setState({ today: newToday });
   };
   // componentDidMount() {
   //   changeCurrentMonth()
   // }
 
   render() {
-    const { month } = this.state;
+    const { month, today } = this.state;
     return (
       <div className={styles.container}>
-        <Today month={month} />
-        <MainCalendar changeCurrentMonth={this.changeCurrentMonth} />
+        <Today month={month} today={today}  />
+        <MainCalendar changeCurrentMonth={this.changeCurrentMonth} changeCurrentToday={this.changeCurrentToday} />
       </div>
     );
   }

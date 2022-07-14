@@ -23,11 +23,12 @@ const FullMonth = (props) => {
   
   }
   addLastesDay(currentWeekDay) // COMEBACK LATER
-
   return (
     <div>
       {currentWeekDay.map((day) => (
-        <p className={styles.text}>{day}</p>
+        <p onClick={(e)=>{
+          const { changeCurrentTodayNum } = props;
+          changeCurrentTodayNum([day])}} className={styles.text}>{day}</p>
       ))}
     </div>
   );
