@@ -22,9 +22,12 @@
   flex-direction: row;
   margin-right: 1.45em;
   text-align: center;
+  text-transform: uppercase;
+ pointer-events: none;
 }
 .weekDaysBox > * {
   margin-left: 1.45em;
+  pointer-events:all;
 }
 .text {
   color: #b7b7b7;

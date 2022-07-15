@@ -47,7 +47,7 @@ class MainCalendar extends Component {
   render() {
     const { age, isThirtyDays, month, monthNum, checkedDay } = this.state;
     const valueMonthName = Object.values(month)[[monthNum]];
-    const daysWeek = ["S", "M", "T", "W", "T", "F", "S"];
+    const daysWeek = ["S", "M", "T", "W", "T", "F", "s"];
     const { changeCurrentToday, changeCurrentNameOfToday } = this.props;
     return (
       <div className={styles.calendarConainer}>
@@ -86,4 +86,4 @@ class MainCalendar extends Component {
 
 export default MainCalendar;
 
-// a
+// ["S", "M", "T", "W", "T", "F", "S"];[{name:"S"}, {name:"M"}, {name:"T"},{name:"W"}, {name:"T"}, {name:"F"}, {name:"S"}];
