@@ -66,7 +66,7 @@ class MainCalendar extends Component {
               className={styles.dayOfText}
               key={[dayWeek] + Math.random()}
             >
-              {dayWeek}{" "}
+              <span className={styles.span}>{dayWeek}</span>{" "}
               <FullMonth
                 numberOfDayWeek={0 + index}
                 calendarAge={age}
