@@ -26,8 +26,14 @@ class MainCalendar extends Component {
       monthNum: 6,
       isThirtyDays: false,
       todayNum: 0,
+      checkedDay: false,
     };
   }
+  changeCheckedDay = () => {
+    this.setState({
+      checkedDay: (this.state.checkedDay = !this.state.checkedDay),
+    });
+  };
   handleMonth = (props) => {
     const { age, isThirtyDays, month, monthNum } = this.state;
     const valueMonthName = Object.values(month)[[monthNum]];
@@ -35,32 +41,14 @@ class MainCalendar extends Component {
     changeCurrentMonth(valueMonthName);
   };
 
-  changeCurrentTodayNum = (newTodayNum) => {
-    this.setState({ todayNum: newTodayNum });
-  };
-
-  handleToday = (props) => {
-    const { todayNum } = this.state;
-    const { changeCurrentToday } = this.props;
-    console.log(todayNum);
-    changeCurrentToday(todayNum);
-  };
-
-  componentDidMount() {
-    this.handleToday();
-  }
-  componentDidUpdate() {
-    const { todayNum } = this.state;
-    console.log(todayNum);
-  }
   componentDidMount() {
     this.handleMonth();
   }
   render() {
-    const { age, isThirtyDays, month, monthNum, todayNum } = this.state;
+    const { age, isThirtyDays, month, monthNum, checkedDay } = this.state;
     const valueMonthName = Object.values(month)[[monthNum]];
     const daysWeek = ["S", "M", "T", "W", "T", "F", "S"];
-
+    const { changeCurrentToday, changeCurrentNameOfToday } = this.props;
     return (
       <div className={styles.calendarConainer}>
         <div className={styles.monthAgeName}>
@@ -70,14 +58,23 @@ class MainCalendar extends Component {
         </div>
         <div className={styles.weekDaysBox}>
           {daysWeek.map((dayWeek, index) => (
-            <div className={styles.dayOfText} key={[dayWeek] + Math.random()}>
+            <div
+              onClick={(e) => {
+                const dayWeekNames = [(daysWeek.indexOf(dayWeek))];
+                changeCurrentNameOfToday(dayWeekNames)
+              }}
+              className={styles.dayOfText}
+              key={[dayWeek] + Math.random()}
+            >
               {dayWeek}{" "}
               <FullMonth
                 numberOfDayWeek={0 + index}
                 calendarAge={age}
                 calendarMonth={6}
                 howManyDays={[isThirtyDays]}
-                changeCurrentTodayNum={this.changeCurrentTodayNum}
+                changeCurrentToday={changeCurrentToday}
+                changeCheckedDay={this.changeCheckedDay}
+                checkedDay={checkedDay}
               />
             </div>
           ))}

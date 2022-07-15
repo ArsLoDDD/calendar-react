@@ -3,7 +3,7 @@ import { eachDayOfInterval, format } from "date-fns";
 import styles from "./FullMonth.module.scss";
 
 const FullMonth = (props) => {
-  const { numberOfDayWeek,calendarMonth, calendarAge, howManyDays} = props;
+  const { numberOfDayWeek, calendarMonth, calendarAge, howManyDays } = props;
   const eachDayMonth = eachDayOfInterval({
     start: new Date(calendarAge, calendarMonth, 1),
     end: new Date(calendarAge, calendarMonth, howManyDays ? 31 : 30),
@@ -16,19 +16,31 @@ const FullMonth = (props) => {
     }
   });
 
-  function addLastesDay(array){
-    if (array.lastIndexOf("01", 0) != 0 && array.lastIndexOf("02", 0) !=0 ) {
+  function addLastesDay(array) {
+    if (array.lastIndexOf("01", 0) != 0 && array.lastIndexOf("02", 0) != 0) {
       array.unshift(<div> &nbsp; </div>);
+    }
   }
-  
-  }
-  addLastesDay(currentWeekDay) // COMEBACK LATER
+  addLastesDay(currentWeekDay); // COMEBACK LATER
   return (
-    <div>
+    <div 
+      onClick={(e) => {
+        const { changeCheckedDay } = props;
+        console.log(changeCheckedDay);
+        changeCheckedDay();
+      }}
+    >
       {currentWeekDay.map((day) => (
-        <p onClick={(e)=>{
-          const { changeCurrentTodayNum } = props;
-          changeCurrentTodayNum([day])}} className={styles.text}>{day}</p>
+        <p
+          onClick={(e) => {
+            const { changeCurrentToday } = props;
+            console.log(changeCurrentToday);
+            changeCurrentToday([day]);
+          }}
+          className={styles.text}
+        >
+          {day}
+        </p>
       ))}
     </div>
   );
