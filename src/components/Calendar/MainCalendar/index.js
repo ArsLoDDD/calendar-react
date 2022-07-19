@@ -56,22 +56,44 @@ class MainCalendar extends Component {
           &nbsp;
           <p>{age}</p>
         </div>
+        <div className={styles.flexSection}>
+          <p
+            onClick={(e) => {
+              this.setState({ monthNum: monthNum - 1 });
+              if (monthNum <= 0) {
+                this.setState({ monthNum: 11 });
+              }
+            }}
+          >{`<`}</p>
+          <p
+            onClick={(e) => {
+              this.setState({ monthNum: monthNum + 1 });
+              if (monthNum === 11) {
+                this.setState({ monthNum: 0 });
+              }
+            }}
+          >{`>`}</p>
+          <p
+            onClick={(e) => {
+              this.setState({ age: age - 1 });
+            }}
+          >{`<`}</p>
+          <p
+            onClick={(e) => {
+              this.setState({ age: age + 1 });
+            }}
+          >{`>`}</p>
+        </div>
         <div className={styles.weekDaysBox}>
           {daysWeek.map((dayWeek, index) => (
-            <div
-              onClick={(e) => {
-                const dayWeekNames = [(daysWeek.indexOf(dayWeek))];
-                changeCurrentNameOfToday(dayWeekNames)
-              }}
-              className={styles.dayOfText}
-              key={[dayWeek] + Math.random()}
-            >
+            <div className={styles.dayOfText} key={[dayWeek] + Math.random()}>
               <span className={styles.span}>{dayWeek}</span>{" "}
               <FullMonth
                 numberOfDayWeek={0 + index}
                 calendarAge={age}
-                calendarMonth={6}
+                calendarMonth={monthNum}
                 howManyDays={[isThirtyDays]}
+                changeCurrentNameOfToday={changeCurrentNameOfToday}
                 changeCurrentToday={changeCurrentToday}
                 changeCheckedDay={this.changeCheckedDay}
                 checkedDay={checkedDay}

@@ -11,6 +11,7 @@
 }
 .monthAgeName > * {
   font-size: 20px;
+  margin-bottom: 0;
   font-weight: bold;
   color: #009991;
   text-transform: uppercase;
@@ -21,13 +22,12 @@
   margin-right: 1.45em;
   text-align: center;
   text-transform: uppercase;
-  
 }
 .weekDaysBox > * {
   margin-left: 1.45em;
 }
-.span{
-  pointer-events:none;
+.span {
+  pointer-events: none;
 }
 
 .text {
@@ -44,4 +44,15 @@
   height: 90%;
   width: 48%;
   background-color: white;
+}
+.flexSection {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+}
+.flexSection>*{
+  margin: 0.2em 0 0.5em 0;
+  color: #009991;
+  font-weight: bold;
+  font-size: 20px;
 }
